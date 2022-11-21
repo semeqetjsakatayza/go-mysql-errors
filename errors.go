@@ -26,3 +26,8 @@ func IsDuplicatedEntryError(err error) bool {
 func IsUnknownColumnError(err error) bool {
 	return checkMySQLErrorNumber(err, 1054)
 }
+
+// IsUnknownTableError check if given `err` is MySQL unknown table error.
+func IsUnknownTableError(err error) bool {
+	return checkMySQLErrorNumber(err, 1051)
+}
