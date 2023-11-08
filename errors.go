@@ -17,6 +17,11 @@ func IsTableNotExistError(err error) bool {
 	return checkMySQLErrorNumber(err, 1146)
 }
 
+// IsDuplicatedColumnError check if given `err` is MySQL duplicated column name error.
+func IsDuplicatedColumnError(err error) bool {
+	return checkMySQLErrorNumber(err, 1060)
+}
+
 // IsDuplicatedEntryError check if given `err` is MySQL duplicated entry error.
 func IsDuplicatedEntryError(err error) bool {
 	return checkMySQLErrorNumber(err, 1062)
