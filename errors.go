@@ -12,6 +12,16 @@ func checkMySQLErrorNumber(err error, num uint16) bool {
 	return false
 }
 
+// IsDeadlockFoundError check if given `err` is MySQL deadlock found error.
+func IsDeadlockFoundError(err error) bool {
+	return checkMySQLErrorNumber(err, 1213)
+}
+
+// IsLockWaitTimeoutError check if given `err` is MySQL lock wait timeout error.
+func IsLockWaitTimeoutError(err error) bool {
+	return checkMySQLErrorNumber(err, 1205)
+}
+
 // IsTableNotExistError check if given `err` is MySQL table not exist error.
 func IsTableNotExistError(err error) bool {
 	return checkMySQLErrorNumber(err, 1146)
