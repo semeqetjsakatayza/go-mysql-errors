@@ -46,3 +46,13 @@ func IsUnknownColumnError(err error) bool {
 func IsUnknownTableError(err error) bool {
 	return checkMySQLErrorNumber(err, 1051)
 }
+
+// IsServerGoneAwayError check if given `err` is MySQL server has gone away error.
+func IsServerGoneAwayError(err error) bool {
+	return checkMySQLErrorNumber(err, 2006)
+}
+
+// IsServerLostConnectionError check if given `err` is lost connection to MySQL server during query error.
+func IsServerLostConnectionError(err error) bool {
+	return checkMySQLErrorNumber(err, 2013)
+}
